@@ -1,0 +1,14 @@
+<div class="">
+  <div class="rounded-lg bg-red-600 shadow-lg p-4">
+      <% unless @pokemon %>
+        <div class="text-8xl text-center">?</div>
+      <% end %>
+      <% if @pokemon %>
+        <div class="text-4xl"><%= @pokemon.name.upcase %></div>
+        <div class="p-2 bg-white rounded-lg m-2">
+          <%= image_tag @pokemon.main_sprite, class: 'w-96' %>
+        </div>
+      <% end %>
+    <%= link_to 'Return to Home', root_path %>
+  </div>
+</div>
