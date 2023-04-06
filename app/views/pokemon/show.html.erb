@@ -24,7 +24,7 @@
         </div>
       <% end %>
       <div class="p-4 flex mt-2 justify-between">
-        <%= link_to 'Return to Home', root_path %>
+        <%= link_to 'Return to Home', root_path + "?first_id=#{@pokemon.id}" %>
         <% if @pokemon.flavor_text.split(/\f/).size > 1 %>
           <button data-action="click->paginator#prev" class="hidden" data-paginator-target="prev">Prev</button>
           <button data-action="click->paginator#next" data-paginator-target="next">Next</button>
