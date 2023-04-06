@@ -5,7 +5,7 @@ class PokedexController < ApplicationController
     all_pokemon.each do |pokemon|
       @pokelist[pokemon.id] = pokemon.name
     end
-    @first_id = params[:first_id].to_i || 1
+    @first_id = (params[:first_id] || 1).to_i
     @last_id = [150, @first_id + 17].min
   end
 
