@@ -1,15 +1,18 @@
 <div class="rounded-lg bg-red-600 shadow-lg p-4">
-  <div class="m-1 bg-white rounded-lg border-2 w-[40rem]">
+  <div class="m-1 bg-white rounded-lg border-2 w-[44rem] h-[45rem]">
     <div class="flex border-black border-b-4 p-4">
       <div class="w-96">
         <%= image_tag @pokemon.main_sprite, class: 'w-96' %>
-        <div class="text-center">No.<%= @pokemon.id.to_s.rjust(3, '0') %></div>
+        <% if @pokemon.main_sprite.empty? %>
+          <div class="text-5xl h-96 text-center leading-[24rem] align-middle">???</div>
+        <% end %>
+        <div class="text-center">No.<%= @pokemon.id ? @pokemon.id.to_s.rjust(3, '0') : '???' %></div>
       </div>
-      <div class="text-2xl mt-8 space-y-16">
+      <div class="text-2xl ml-4 mt-8 space-y-16">
         <div><%= @pokemon.name.upcase %></div>
-        <div><%= @pokemon.genus.match(/(?<type>[a-zA-Z]+) Pokémon/)[:type] %></div>
-        <div>HT  2'00"</div>
-        <div>WT  19.0lb</div>
+        <div><%= @pokemon.genus.match(/(?<type>[a-zA-Z?]+) Pokémon/)[:type] %></div>
+        <div>HT  <%= height %></div>
+        <div>WT  <%= weight %></div>
       </div>
     </div>
     <div data-controller="paginator" data-paginator-page-value="0" data-paginator-num-pages-value="<%= @pokemon.flavor_text.split(/\f/).length %>">
@@ -20,10 +23,12 @@
           <% end %>
         </div>
       <% end %>
-      <div class="p-4 flex justify-between">
+      <div class="p-4 flex mt-2 justify-between">
         <%= link_to 'Return to Home', root_path %>
-        <button data-action="click->paginator#prev" class="hidden" data-paginator-target="prev">Prev</button>
-        <button data-action="click->paginator#next" data-paginator-target="next">Next</button>
+        <% if @pokemon.flavor_text.split(/\f/).size > 1 %>
+          <button data-action="click->paginator#prev" class="hidden" data-paginator-target="prev">Prev</button>
+          <button data-action="click->paginator#next" data-paginator-target="next">Next</button>
+        <% end %>
       </div>
     </div>
   </div>

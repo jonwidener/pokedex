@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_202630) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_04_204033) do
   create_table "pokemon", force: :cascade do |t|
     t.string "name"
     t.string "main_sprite"
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_202630) do
     t.datetime "updated_at", null: false
     t.string "flavor_text"
     t.string "genus"
+    t.integer "height"
+    t.integer "weight"
   end
 
 end
