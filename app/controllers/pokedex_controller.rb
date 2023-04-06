@@ -43,7 +43,7 @@ class PokedexController < ApplicationController
       pokemon = Pokemon.new(
         name: pokedata['name'],
         main_sprite: pokedata['sprites']['front_default'],
-        flavor_text: species_data['flavor_text_entries'].select { |el| el['version']['name'] == 'red' && el['language']['name'] == 'en' }[0]['flavor_text'],
+        flavor_text: species_data['flavor_text_entries'].find { |el| el['version']['name'] == 'red' && el['language']['name'] == 'en' }['flavor_text'],
         genus: species_data['genera'].select { |el| el['language']['name'] == 'en' }[0]['genus'],
         height: pokedata['height'],
         weight: pokedata['weight']
