@@ -3,7 +3,5 @@ Rails.application.routes.draw do
   get 'pokedex/index'
   post 'pokedex/search'
 
-  resources :trainer
-
   root "pokedex#index"
 end
